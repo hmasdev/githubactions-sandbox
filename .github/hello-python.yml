@@ -1,0 +1,17 @@
+name: Hello Python Workflow
+
+on:
+  workflow_dispatch:
+
+jobs:
+  hello_python:
+    runs-on: ubuntu-latest
+    env:
+      TEXT: "${{ github.event.inputs.lowercase_text }}"
+    steps:
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Say Hello Python
+        run: python -c "print('Hello Python!')"
