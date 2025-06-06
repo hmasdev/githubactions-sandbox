@@ -1,10 +1,11 @@
 name: AI translator
 on:
   workflow_dispatch:
-    text:
-      description: "英訳したい文章を入力してください"
-      required: true
-      default: "これはテストです"
+    inputs:
+      text:
+        description: "英訳したい文章を入力してください"
+        required: true
+        default: "これはテストです"
 
 jobs:
   inference:
