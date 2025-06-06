@@ -10,6 +10,8 @@ on:
 jobs:
   inference:
     runs-on: ubuntu-latest
+    permissions:
+      models: read
     steps:
       - name: Translate
         id: inference
