@@ -1,0 +1,23 @@
+name: AI translator
+on:
+  workflow_dispatch:
+    text:
+      description: "英訳したい文章を入力してください"
+      required: true
+      default: "これはテストです"
+
+jobs:
+  inference:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Translate
+        id: inference
+        uses: actions/ai-inference@v1
+        with:
+          prompt: "Translate the following sentence into English: ${{ github.event.inputs.lowercase_text }}"
+
+      - name: Print Output
+        id: output
+        run: echo "$OUTPUT"
+        env:
+          OUTPUT: "${{ steps.inference.outputs.response }}"
